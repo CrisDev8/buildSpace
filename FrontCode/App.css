@@ -1,0 +1,83 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 64px;
+  }
+  
+  .chainContainer{
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    max-width: 600px;
+  }
+  
+  .lineHeader{
+    content: '';
+    position: absolute;
+    top:0;
+    width: 100%;
+    background: linear-gradient(
+  90deg, #62d75b 1%, #01d2d2 22%, #4b4eff 47%, #ff3fbf 77%, #fd742b 100%);
+    height: 3px;
+  }
+  
+  .divAccount{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+  }
+  
+  .account{
+    width: 250px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  .containerList{
+    height: 400px;
+    overflow: scroll;
+  }
+  
+  .cards{
+    background-color: white;
+    margin-top: 16px;
+    padding: 8px;
+    border: 1px solid #dee0e3;
+    border-radius: 3px;
+  }
+  
+  .inputClass{
+    width: 50%;
+    margin-top: 9px;
+  }
+  
+  .dataContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+  }
+  
+  .header {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+  }
+  
+  .bio {
+    text-align: center;
+    color: gray;
+    margin-top: 16px;
+  }
+  
+  .waveButton {
+    cursor: pointer;
+    margin-top: 16px;
+    padding: 8px;
+    border: 0;
+    border-radius: 5px;
+    
+  }

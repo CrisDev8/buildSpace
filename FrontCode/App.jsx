@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import abi from "./utils/WavePortal.json";
 
 export default function App() {
-  const contractAddress = "0x2318e1802e59bB271E0900DBD7919604f984543B";
+  const contractAddress = "0xCAFc0Ff1ae3034bFfbBb100C6E04CAAc3172c2B2";
   const contractABI = abi.abi;
   const [currentAccount, setCurrentAccount] = useState("");
   const [message, setMessage] = useState("");
@@ -132,11 +132,14 @@ export default function App() {
       }
     } catch (error) {
       console.log(error)
-      alert("debes tener una billetera virtual instalada")
+      alert("Calma Wey, enviaste muchos mensajes seguidos, espera 15 segundos")
     }
   }
   const setInput = (event) => {
     setMessage(event.target.value);
+  }
+  const logout = () => {
+    setCurrentAccount("");
   }
 
   useEffect(() => {
@@ -145,41 +148,49 @@ export default function App() {
   }, [])
 
   return (
-    <div className="mainContainer">
-
+    <div className="chainContainer">
+      <div className="lineHeader" ></div>
       <div className="dataContainer">
+
+        {currentAccount && (<div className="divAccount">
+          <p className="account">Account connect: {currentAccount}</p>
+          <p onClick={logout}>Logout</p>
+        </div>
+        )}
         <div className="header">
           👋 Hey there!
         </div>
 
         <div className="bio">
-          I am Cris and I worked on self-driving cars so that's pretty cool right? Connect your Ethereum wallet and wave at me!
+          I am Cris and I work on build web3 pages to learn and teach this topic so that's pretty cool right? Connect your Ethereum wallet and wave at me!
         </div>
         <br></br>
         <div>
-          <label>Write a motivation message: </label>
+          <label>Write me a message or send me your favorite song link 🎶 🎶 </label>
           <br></br>
-          <input value={message} onChange={setInput}></input>
+          <input value={message} onChange={setInput} className="inputClass"></input>
         </div>
-        <button className="waveButton" onClick={wave}>
+        {currentAccount && (<button className="waveButton" onClick={wave}>
           Wave at Me
         </button>
+        )}
         {!currentAccount && (
           <button className="waveButton" onClick={connectWallet}>
             Connect Wallet
           </button>
         )}
 
-        <h5>Total Waves: {countWave}</h5>
-
-        {data && data.map((wave, index) => {
-          return (
-            <div key={index} style={{ backgroundColor: "OldLace", marginTop: "16px", padding: "8px" }}>
-              <div>Address: {wave.address}</div>
-              <div>Time: {wave.timestamp.toString()}</div>
-              <div>Message: {wave.message}</div>
-            </div>)
-        })}
+        {currentAccount && (<h5>Total Waves: {countWave}</h5>)}
+        <div className="containerList">
+          {data && data.map((wave, index) => {
+            return (
+              <div className="cards" key={index} >
+                <div>Address: {wave.address}</div>
+                <div>Time: {wave.timestamp.toString()}</div>
+                <div>Message: {wave.message}</div>
+              </div>)
+          })}
+        </div>
       </div>
     </div>
   );
